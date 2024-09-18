@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 
+    <!-- font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
     <!-- favicon -->
     <link rel="icon" type="image/png" href="img/favIconLogo.png" />
     <title>Image Editor</title>
@@ -19,9 +25,9 @@
           <canvas id="canvas"></canvas>
         </div>
 
-        <div class="upLoud">
-          <label for="upLoud">UpLoud</label>
-          <input type="file" id="upLoud" />
+        <div class="upload">
+          <label for="upload">Upload</label>
+          <input type="file" id="upload" />
         </div>
       </div>
 
@@ -29,70 +35,83 @@
         <ul>
           <li>
             <label for="saturate">Saturate</label>
-            <input type="range" id="saturate" min="0" max="200" value="100" />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input type="range" id="saturate" min="0" max="200" value="100" />
+            </div>
           </li>
 
           <li>
             <label for="contrast">Contrast</label>
-            <input type="range" id="contrast" min="0" max="200" value="100" />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input type="range" id="contrast" min="0" max="200" value="100" />
+            </div>
           </li>
 
           <li>
             <label for="brightness">Brightness</label>
-            <input type="range" id="brightness" min="0" max="200" value="100" />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input
+                type="range"
+                id="brightness"
+                min="0"
+                max="200"
+                value="100"
+              />
+            </div>
           </li>
 
           <li>
             <label for="sepia">Sepia</label>
-            <input type="range" id="sepia" min="0" max="200" value="0" />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input type="range" id="sepia" min="0" max="200" value="0" />
+            </div>
           </li>
 
           <li>
             <label for="grayscale">Grayscale</label>
-            <input
-              type="range"
-              id="grayscale"
-              step="0.1"
-              min="0"
-              max="1"
-              value="0"
-            />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input
+                type="range"
+                id="grayscale"
+                step="0.1"
+                min="0"
+                max="1"
+                value="0"
+              />
+            </div>
           </li>
 
           <li>
             <label for="blur">Blur</label>
-            <input
-              type="range"
-              id="blur"
-              step="0.1"
-              min="0"
-              max="10"
-              value="0"
-            />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input
+                type="range"
+                id="blur"
+                step="0.1"
+                min="0"
+                max="10"
+                value="0"
+              />
+            </div>
           </li>
 
           <li>
             <label for="hue-rotate">Hue Rotate</label>
-            <input type="range" id="hue-rotate" min="0" max="350" value="0" />
-            <span></span>
-            <!-- <button class="reset" onclick="reseti()">Reset</button> -->
+            <div class="filter">
+              <i class="fas fa-redo reset"></i>
+              <input type="range" id="hue-rotate" min="0" max="350" value="0" />
+            </div>
           </li>
 
           <li>
-            <button download="img" id="download">Download</button>
-            <button id="reset" onclick="resetValue()">Reset All</button>
+            <button type="button" download="img" id="download">Download</button>
+            <button type="button" id="resetAll">Reset All</button>
           </li>
         </ul>
       </div>

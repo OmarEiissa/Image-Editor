@@ -11,7 +11,8 @@ body {
 .container {
   background-color: #222;
   width: 80vw;
-  margin: auto;
+  margin: 20px auto;
+
   padding: 20px;
   border-radius: 10px;
   display: grid;
@@ -32,18 +33,19 @@ body {
   max-height: 60vh;
 }
 
-.img .upLoud input {
+.img .upload input {
   display: none;
 }
 
-.upLoud label {
+.upload label {
   color: #fff;
   padding: 8px 20px;
   border: 2px #fff dashed;
   cursor: pointer;
 }
 
-.filters ul {
+.filters ul,
+.filters ul li {
   display: flex;
   flex-direction: column;
   gap: 25px;
@@ -51,8 +53,6 @@ body {
 }
 
 .filters ul li {
-  display: flex;
-  flex-direction: column;
   gap: 15px;
 }
 
@@ -65,8 +65,7 @@ body {
   justify-content: space-around;
 }
 
-.filters ul li #download,
-.filters ul li #reset {
+.filters ul li button {
   color: #fff;
   padding: 10px 20px;
   background-color: #060;
@@ -87,23 +86,9 @@ body {
   .img .img-box canvas {
     max-width: 80vw;
   }
-}
 
-/*  */
-span {
-  margin: auto;
-}
-span button.reset {
-  width: -moz-fit-content;
-  width: fit-content;
-  padding: 5px 20px;
-  margin-top: -5px;
-  color: #fff;
-  padding: 10px;
-  background-color: #060;
-  cursor: pointer;
-
-  border: none;
-  outline: none;
-  border-radius: 10px;
+  .upload label,
+  .filters ul li button:hover {
+    cursor: context-menu;
+  }
 }
