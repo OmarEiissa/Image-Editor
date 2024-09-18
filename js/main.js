@@ -28,7 +28,7 @@ const defaultValues = {
 
 function resetValue() {
   ctx.filter = "none";
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  redrawImage();
   saturate.value = defaultValues.saturate;
   contrast.value = defaultValues.contrast;
   brightness.value = defaultValues.brightness;
@@ -38,36 +38,9 @@ function resetValue() {
   hueRotate.value = defaultValues.hueRotate;
 }
 
-upload.onchange = function () {
-  if (!upload.files[0] || !upload.files[0].type.startsWith("image/")) {
-    alert("Please upload a valid image file.");
-    return;
-  }
-
-  resetValue();
-
-  download.style.display = "block";
-  resetAll.style.display = "block";
-  imgBox.style.display = "block";
-
-  let file = new FileReader();
-  file.readAsDataURL(upload.files[0]);
-  file.onload = function () {
-    img.src = file.result;
-  };
-
-  img.onload = function () {
-    canvas.width = img.width;
-    canvas.height = img.height;
-    ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
-    img.style.display = "none";
-  };
-
-  img.onerror = function () {
-    alert("Error loading the image. Please try another file.");
-    resetValue();
-  };
-};
+function redrawImage() {
+  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+}
 
 function applyFilters() {
   ctx.filter = `
@@ -79,34 +52,67 @@ function applyFilters() {
     blur(${blur.value}px)
     hue-rotate(${hueRotate.value}deg)
   `;
-  ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+  redrawImage();
 }
 
-let icoResetFilter = document.querySelectorAll(".reset");
-
-icoResetFilter.forEach((icon) => {
-  icon.addEventListener("click", (event) => {
-    const filter = event.target.dataset.filter;
-    const inputElement = document.getElementById(filter);
-    if (inputElement) {
-      inputElement.value = defaultValues[filter];
-      applyFilters();
-    }
-  });
-});
-
-let filters = document.querySelectorAll("ul li input");
-
-filters.forEach((input) => {
-  input.addEventListener("input", applyFilters);
-});
-
-// ResetAll
-resetAll.addEventListener("click", () => {
+function handleError(message) {
+  alert(message);
   resetValue();
-});
+}
 
-// Download
-download.addEventListener("click", () => {
-  download.href = canvas.toDataURL("image/jpeg"); // default value png
-});
+function handleFileUpload(file) {
+  let fileReader = new FileReader();
+  fileReader.readAsDataURL(file);
+  fileReader.onload = function () {
+    img.src = fileReader.result;
+  };
+  img.onload = function () {
+    canvas.width = img.width;
+    canvas.height = img.height;
+    redrawImage();
+    img.style.display = "none";
+  };
+}
+
+function setupEventListeners() {
+  document.querySelectorAll(".reset").forEach((icon) => {
+    icon.addEventListener("click", (event) => {
+      const filterId = event.target.dataset.filterId;
+      const inputElement = document.getElementById(filterId);
+      if (inputElement) {
+        inputElement.value = defaultValues[filterId];
+        applyFilters();
+      }
+    });
+  });
+
+  document.querySelectorAll("ul li input").forEach((input) => {
+    input.addEventListener("input", applyFilters);
+  });
+
+  resetAll.addEventListener("click", resetValue);
+  download.addEventListener("click", () => {
+    download.href = canvas.toDataURL("image/jpeg");
+  });
+}
+
+function setupImageUpload() {
+  upload.onchange = function () {
+    if (!upload.files[0] || !upload.files[0].type.startsWith("image/")) {
+      handleError("Please upload a valid image file.");
+      return;
+    }
+    resetValue();
+    handleFileUpload(upload.files[0]);
+    download.style.display = "block";
+    resetAll.style.display = "block";
+    imgBox.style.display = "block";
+  };
+}
+
+function init() {
+  setupEventListeners();
+  setupImageUpload();
+}
+
+init();

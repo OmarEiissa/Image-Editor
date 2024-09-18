@@ -103,7 +103,7 @@ body {
 .filters ul li button {
   color: #fff;
   padding: 10px 20px;
-  background-color: #060;
+  background-color: #0075ff;
   cursor: pointer;
   border: none;
   outline: none;
@@ -113,7 +113,7 @@ body {
 }
 
 .filters ul li button:hover {
-  background-color: #090;
+  opacity: .8;
 }
 
 @media screen and (max-width: 650px) {
@@ -144,6 +144,7 @@ body {
   .upload label,
   .filters ul li button:hover {
     cursor: context-menu;
+    opacity: 1;
   }
 
   .filter .reset:hover {
