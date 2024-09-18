@@ -74,6 +74,14 @@ function handleFileUpload(file) {
   };
 }
 
+function downloadImage() {
+  const dataURL = canvas.toDataURL("image/jpeg");
+  const link = document.createElement("a");
+  link.href = dataURL;
+  link.download = "image.jpg";
+  link.click();
+}
+
 function setupEventListeners() {
   document.querySelectorAll(".reset").forEach((icon) => {
     icon.addEventListener("click", (event) => {
@@ -91,9 +99,7 @@ function setupEventListeners() {
   });
 
   resetAll.addEventListener("click", resetValue);
-  download.addEventListener("click", () => {
-    download.href = canvas.toDataURL("image/jpeg");
-  });
+  download.addEventListener("click", downloadImage);
 }
 
 function setupImageUpload() {

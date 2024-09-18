@@ -34,7 +34,7 @@ body {
 
 .img .img-box img,
 .img .img-box canvas {
-  max-width: 45vw;
+  max-width: 40vw;
   max-height: 60vh;
 }
 
@@ -104,7 +104,6 @@ body {
   color: #fff;
   padding: 10px 20px;
   background-color: #0075ff;
-  cursor: pointer;
   border: none;
   outline: none;
   border-radius: 10px;
@@ -113,7 +112,12 @@ body {
 }
 
 .filters ul li button:hover {
+  cursor: pointer;
   opacity: .8;
+}
+
+.filters ul li button:active {
+  transform: scale(.9);
 }
 
 @media screen and (max-width: 650px) {
@@ -128,7 +132,7 @@ body {
 
   .img .img-box img,
   .img .img-box canvas {
-    max-width: 80vw;
+    max-width: 70vw;
   }
 
   .upload label {
@@ -145,6 +149,10 @@ body {
   .filters ul li button:hover {
     cursor: context-menu;
     opacity: 1;
+  }
+
+  .filters ul li button:active {
+    opacity: .8;
   }
 
   .filter .reset:hover {
