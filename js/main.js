@@ -82,6 +82,20 @@ function downloadImage() {
   link.click();
 }
 
+function updateFilterValues() {
+  document.getElementById("saturateValue").innerText = `${saturate.value} %`;
+  document.getElementById("contrastValue").innerText = `${contrast.value} %`;
+  document.getElementById(
+    "brightnessValue"
+  ).innerText = `${brightness.value} %`;
+  document.getElementById("sepiaValue").innerText = `${sepia.value} %`;
+  document.getElementById("grayscaleValue").innerText = `${grayscale.value}`;
+  document.getElementById("blurValue").innerText = `${blur.value} px`;
+  document.getElementById(
+    "hueRotateValue"
+  ).innerText = `${hueRotate.value} deg`;
+}
+
 function setupEventListeners() {
   document.querySelectorAll(".reset").forEach((icon) => {
     icon.addEventListener("click", (event) => {
@@ -90,12 +104,16 @@ function setupEventListeners() {
       if (inputElement) {
         inputElement.value = defaultValues[filterId];
         applyFilters();
+        updateFilterValues();
       }
     });
   });
 
   document.querySelectorAll("ul li input").forEach((input) => {
-    input.addEventListener("input", applyFilters);
+    input.addEventListener("input", () => {
+      applyFilters();
+      updateFilterValues();
+    });
   });
 
   resetAll.addEventListener("click", resetValue);
@@ -109,6 +127,7 @@ function setupImageUpload() {
       return;
     }
     resetValue();
+    updateFilterValues();
     handleFileUpload(upload.files[0]);
     download.style.display = "block";
     resetAll.style.display = "block";

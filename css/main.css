@@ -53,12 +53,12 @@ body {
 .filters ul li {
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 25px;
   direction: rtl;
 }
 
 .filters ul li {
-  gap: 15px;
+  gap: 10px;
 }
 
 .filters ul li label {
@@ -69,7 +69,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  flex-direction: row-reverse;
+  flex-direction: row;
   gap: 5px;
 }
 
@@ -83,6 +83,14 @@ body {
   padding: 3px;
   border-radius: 5px;
   transition: 0.3s ease;
+}
+
+.filter span {
+  color: #fff;
+  font-size: 12px;
+  width: 45px;
+  text-align: center;
+  direction: ltr;
 }
 
 .filter .reset:hover {
@@ -113,11 +121,11 @@ body {
 
 .filters ul li button:hover {
   cursor: pointer;
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .filters ul li button:active {
-  transform: scale(.9);
+  transform: scale(0.9);
 }
 
 @media screen and (max-width: 650px) {
@@ -127,7 +135,7 @@ body {
   }
 
   .filters ul li {
-    gap: 10px;
+    gap: 5px;
   }
 
   .img .img-box img,
@@ -152,7 +160,7 @@ body {
   }
 
   .filters ul li button:active {
-    opacity: .8;
+    opacity: 0.8;
   }
 
   .filter .reset:hover {
