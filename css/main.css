@@ -2,6 +2,7 @@
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+  box-sizing: border-box;
 }
 
 body {
@@ -27,6 +28,10 @@ body {
   align-items: center;
 }
 
+.img-box {
+  display: none;
+}
+
 .img .img-box img,
 .img .img-box canvas {
   max-width: 45vw;
@@ -48,7 +53,7 @@ body {
 .filters ul li {
   display: flex;
   flex-direction: column;
-  gap: 25px;
+  gap: 15px;
   direction: rtl;
 }
 
@@ -58,6 +63,36 @@ body {
 
 .filters ul li label {
   color: #fff;
+}
+
+.filters ul li .filter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  gap: 5px;
+}
+
+.filters ul li input {
+  flex-grow: 1;
+}
+
+.filter .reset {
+  color: #fff;
+  font-size: 12px;
+  padding: 3px;
+  border-radius: 5px;
+  transition: 0.3s ease;
+}
+
+.filter .reset:hover {
+  background-color: #444;
+  cursor: pointer;
+}
+
+.filter .reset:active {
+  background-color: #444;
+  transform: scale(0.9);
 }
 
 .filters ul li:last-child {
@@ -70,16 +105,25 @@ body {
   padding: 10px 20px;
   background-color: #060;
   cursor: pointer;
-  /*  */
   border: none;
   outline: none;
   border-radius: 10px;
+  transition: 0.3s ease;
+  display: none;
+}
+
+.filters ul li button:hover {
+  background-color: #090;
 }
 
 @media screen and (max-width: 650px) {
   .container {
     grid-template-columns: 1fr;
-    gap: 50px;
+    gap: 20px;
+  }
+
+  .filters ul li {
+    gap: 10px;
   }
 
   .img .img-box img,
@@ -87,8 +131,27 @@ body {
     max-width: 80vw;
   }
 
+  .upload label {
+    font-size: 14px;
+    padding: 6px 16px;
+  }
+
+  .filters ul li button {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
   .upload label,
   .filters ul li button:hover {
     cursor: context-menu;
+  }
+
+  .filter .reset:hover {
+    background-color: transparent;
+    cursor: context-menu;
+  }
+
+  .filter .reset:active {
+    background-color: #444;
   }
 }
