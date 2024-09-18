@@ -5,6 +5,7 @@ let sepia = document.querySelector("#sepia");
 let grayscale = document.querySelector("#grayscale");
 let blur = document.querySelector("#blur");
 let hueRotate = document.querySelector("#hueRotate");
+let invert = document.querySelector("#invert");
 
 let upload = document.querySelector("#upload");
 let download = document.querySelector("#download");
@@ -24,6 +25,7 @@ const defaultValues = {
   grayscale: "0",
   blur: "0",
   hueRotate: "0",
+  invert: "0",
 };
 
 function resetValue() {
@@ -36,6 +38,8 @@ function resetValue() {
   grayscale.value = defaultValues.grayscale;
   blur.value = defaultValues.blur;
   hueRotate.value = defaultValues.hueRotate;
+  invert.value = defaultValues.invert;
+  updateFilterValues()
 }
 
 function redrawImage() {
@@ -51,6 +55,7 @@ function applyFilters() {
     grayscale(${grayscale.value})
     blur(${blur.value}px)
     hue-rotate(${hueRotate.value}deg)
+    invert(${invert.value}%)
   `;
   redrawImage();
 }
@@ -94,6 +99,7 @@ function updateFilterValues() {
   document.getElementById(
     "hueRotateValue"
   ).innerText = `${hueRotate.value} deg`;
+  document.getElementById("invertValue").innerText = `${invert.value} %`;
 }
 
 function setupEventListeners() {
