@@ -13,7 +13,7 @@
     />
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="img/favIconLogo.png" />
+    <link rel="icon" type="image/png" href="img/faviconLogo.jpg" />
     <title>Image Editor</title>
   </head>
 
@@ -27,7 +27,7 @@
 
         <div class="upload">
           <label for="upload">Upload</label>
-          <input type="file" id="upload" >
+          <input type="file" id="upload" />
         </div>
       </div>
 
@@ -35,7 +35,7 @@
         <ul>
           <li>
             <label for="saturate">Saturate</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="saturate"></i>
               <input type="range" id="saturate" min="0" max="200" value="100" />
               <span id="saturateValue">100 %</span>
@@ -44,7 +44,7 @@
 
           <li>
             <label for="contrast">Contrast</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="contrast"></i>
               <input type="range" id="contrast" min="0" max="200" value="100" />
               <span id="contrastValue">100 %</span>
@@ -53,7 +53,7 @@
 
           <li>
             <label for="brightness">Brightness</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="brightness"></i>
               <input
                 type="range"
@@ -68,7 +68,7 @@
 
           <li>
             <label for="sepia">Sepia</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="sepia"></i>
               <input type="range" id="sepia" min="0" max="200" value="0" />
               <span id="sepiaValue">0 %</span>
@@ -77,7 +77,7 @@
 
           <li>
             <label for="grayscale">Grayscale</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="grayscale"></i>
               <input
                 type="range"
@@ -93,7 +93,7 @@
 
           <li>
             <label for="blur">Blur</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="blur"></i>
               <input
                 type="range"
@@ -109,7 +109,7 @@
 
           <li>
             <label for="hueRotate">Hue Rotate</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="hueRotate"></i>
               <input type="range" id="hueRotate" min="0" max="350" value="0" />
               <span id="hueRotateValue">0 deg</span>
@@ -118,13 +118,12 @@
 
           <li>
             <label for="invert">Invert</label>
-            <div class="filter">
+            <div class="filter-box">
               <i class="fas fa-redo reset" data-filter-id="invert"></i>
               <input type="range" id="invert" min="0" max="100" value="0" />
               <span id="invertValue">0 %</span>
             </div>
           </li>
-          
 
           <li>
             <button type="button" download="img" id="download">Download</button>
