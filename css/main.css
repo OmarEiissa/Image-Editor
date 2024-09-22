@@ -36,6 +36,36 @@ body {
 
 .img-box {
   display: none;
+  position: relative;
+}
+
+.img-box #toggleOriginal {
+  min-width: 27px;
+  min-height: 27px;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 5px;
+  color: #fff;
+  border: none;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+  transition: 0.3s ease;
+}
+
+.img-box:hover #toggleOriginal {
+  display: block;
+}
+
+.img-box #toggleOriginal:active {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.img-box {
+  touch-action: none; /* لضمان التعامل الصحيح مع الأحداث اللمسية */
 }
 
 .img .img-box img,

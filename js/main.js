@@ -46,6 +46,33 @@ function resetValue() {
   });
 }
 
+const toggleOriginal = document.querySelector("#toggleOriginal");
+// const imgBox = document.querySelector(".img-box");
+
+function showOriginalImage() {
+  ctx.filter = "none";
+  redrawImage();
+  toggleOriginal.innerHTML = `<i class="fa-solid fa-eye-slash"></i>`;
+}
+
+function showEditedImage() {
+  applyFilters();
+  toggleOriginal.innerHTML = `<i class="fa-solid fa-eye"></i>`;
+}
+
+imgBox.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  showOriginalImage();
+});
+
+imgBox.addEventListener("touchend", (e) => {
+  e.preventDefault();
+  showEditedImage();
+});
+
+toggleOriginal.addEventListener("mousedown", showOriginalImage);
+toggleOriginal.addEventListener("mouseup", showEditedImage);
+
 function redrawImage() {
   ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
 }
@@ -116,7 +143,6 @@ function setupEventListeners() {
         applyFilters();
         updateFilterValues();
 
-        // إخفاء زر reset بعد إعادة التعيين
         icon.style.display = "none";
       }
     });
@@ -129,7 +155,6 @@ function setupEventListeners() {
         `[data-filter-id="${filterId}"]`
       );
 
-      // إظهار زر reset عند تغيير قيمة الفلتر
       if (input.value != defaultValues[filterId]) {
         resetButton.style.display = "inline-block";
       }
