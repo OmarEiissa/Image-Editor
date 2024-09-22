@@ -9,12 +9,15 @@ body {
   background-color: #0b0c10;
   color: #e0e0e0;
   font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .container {
   background-color: #1f2833;
   width: 80vw;
-  margin: 20px auto;
 
   padding: 20px;
   border-radius: 10px;
@@ -115,6 +118,7 @@ body {
   border-radius: 10px;
   background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.2), transparent);
   box-shadow: 10px 10px 35px rgba(0, 0, 0, 0.2);
+  height: 28px;
 }
 
 .filters ul li input[type="range"] {
@@ -146,11 +150,17 @@ body {
   padding: 3px;
   border-radius: 5px;
   transition: 0.3s ease;
+  display: none;
 }
 
 .filter-box .reset:hover {
   background-color: #444;
   cursor: pointer;
+}
+
+.filter-box .reset:active {
+  background-color: #444;
+  transform: scale(0.9);
 }
 
 .filter-box span {
@@ -165,11 +175,6 @@ body {
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset 5px 5px 5px rgba(0, 0, 0, 0.2),
     inset -5px -5px 5px rgba(255, 255, 255, 0.25);
-}
-
-.filter-box .reset:active {
-  background-color: #444;
-  transform: scale(0.9);
 }
 
 .filters ul li:last-child {
@@ -232,28 +237,27 @@ body {
       inset 5px 5px 5px rgba(0, 0, 0, 0.2);
   }
 
-  
-.filters {
-  padding-right: 5px;
-}
+  .filters {
+    padding-right: 5px;
+  }
 
-.filters::-webkit-scrollbar {
-  width: 5px;
-}
+  .filters::-webkit-scrollbar {
+    width: 5px;
+  }
 
-.filters::-webkit-scrollbar-track {
-  width: 5px;
-  border-radius: 5px;
-  background-color: #0b0c10;
-  box-shadow: inset 5px 5px 5px rgba(100, 100, 100, 0.1);
-}
+  .filters::-webkit-scrollbar-track {
+    width: 5px;
+    border-radius: 5px;
+    background-color: #0b0c10;
+    box-shadow: inset 5px 5px 5px rgba(100, 100, 100, 0.1);
+  }
 
-.filters::-webkit-scrollbar-thumb {
-  cursor: pointer;
-  border-radius: 5px;
-  background-color: #1f2833;
-  box-shadow: inset 5px 5px 5px rgba(131, 131, 131, 0.1);
-}
+  .filters::-webkit-scrollbar-thumb {
+    cursor: pointer;
+    border-radius: 5px;
+    background-color: #1f2833;
+    box-shadow: inset 5px 5px 5px rgba(131, 131, 131, 0.1);
+  }
 
   .filters ul li input[type="range"]::-webkit-slider-thumb {
     cursor: context-menu;

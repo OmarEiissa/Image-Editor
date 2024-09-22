@@ -39,7 +39,11 @@ function resetValue() {
   blur.value = defaultValues.blur;
   hueRotate.value = defaultValues.hueRotate;
   invert.value = defaultValues.invert;
-  updateFilterValues()
+  updateFilterValues();
+
+  document.querySelectorAll(".reset").forEach((resetButton) => {
+    resetButton.style.display = "none";
+  });
 }
 
 function redrawImage() {
@@ -111,12 +115,25 @@ function setupEventListeners() {
         inputElement.value = defaultValues[filterId];
         applyFilters();
         updateFilterValues();
+
+        // إخفاء زر reset بعد إعادة التعيين
+        icon.style.display = "none";
       }
     });
   });
 
   document.querySelectorAll("ul li input").forEach((input) => {
-    input.addEventListener("input", () => {
+    input.addEventListener("input", (event) => {
+      const filterId = event.target.id;
+      const resetButton = document.querySelector(
+        `[data-filter-id="${filterId}"]`
+      );
+
+      // إظهار زر reset عند تغيير قيمة الفلتر
+      if (input.value != defaultValues[filterId]) {
+        resetButton.style.display = "inline-block";
+      }
+
       applyFilters();
       updateFilterValues();
     });
